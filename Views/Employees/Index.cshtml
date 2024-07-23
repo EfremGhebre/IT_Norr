@@ -1,0 +1,26 @@
+﻿@model IEnumerable<IT_Norr.Models.Employee>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Choose from below list to manage employees:</h2>
+<hr />
+<div class="form-group">
+    
+    <select id="actionSelector" class="form-control" onchange="location = this.value;">
+        <option value="">Select an option</option>
+        <option value="@Url.Action("Create")">Register a new employee</option>
+        <option value="@Url.Action("ViewAllEmployees")">View all employees</option>        
+    </select>
+</div>
+<br />
+<div>
+    <a asp-controller="Home" asp-action="Index"><-- Back to home page</a>
+</div>
+
+
+
+
+

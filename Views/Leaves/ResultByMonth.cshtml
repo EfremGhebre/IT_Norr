@@ -1,0 +1,50 @@
+﻿@model IEnumerable<IT_Norr.Models.Leave> 
+
+@{
+    ViewData["Title"] = "Filtered Leaves";
+    var totalNumberOfDays = 0;
+}
+
+<h2>Leaves filtered by request month</h2>
+
+@if (Model != null && Model.Any())
+    {<table class="table">
+        <thead>
+            <tr>
+                <th>Employee Name</th>
+                <th>Request Date</th>
+                <th>Leave Type</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Number of Days</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var leave in Model)
+            {
+                var numberOfDays = (leave.EndDate - leave.StartDate).Days;
+                totalNumberOfDays += numberOfDays;
+                <tr>
+                    <td>@leave.Employee.Name</td> 
+                    <td>@leave.Time.ToString("yyyy-MM-dd")</td>                
+                    <td>@leave.Type</td>
+                    <td>@leave.EndDate.ToString("yyyy-MM-dd")</td>
+                    <td>@leave.StartDate.ToString("yyyy-MM-dd")</td>
+                    <td>@numberOfDays</td>
+                    <td>@leave.RequestStatus</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div>
+        <p>Total number of days for the selected month: @totalNumberOfDays days</p>
+    </div>
+    }
+    else
+    {
+        <p>No leave requests found for the selected month.</p>
+    }
+    <div>
+        <a asp-action="FilterByMonth">Back to search</a>
+    </div>

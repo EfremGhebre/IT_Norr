@@ -1,0 +1,26 @@
+﻿@model IEnumerable<IT_Norr.Models.Leave>
+
+@{
+    ViewData["Title"] = "Leave history details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Choose from below list to manage leaves:</h2>
+<hr />
+<div class="form-group">
+
+    <select id="actionSelector" class="form-control" onchange="location = this.value;">
+        <option value="">Select an option</option>
+        <option value="@Url.Action("Index")">Edit leave status</option>
+        <option value="@Url.Action("LeaveHistoryList")">Get summary of leaves</option>
+        <option value="@Url.Action("FilterByEmployee")">Filter leave by employee</option>
+        <option value="@Url.Action("FilterByMonth")">Filter leave by month</option>
+    </select>
+</div>
+<br />
+<div>
+    <a asp-controller="Home" asp-action="Index"><-- Back to home page</a>
+</div>
+
+
+

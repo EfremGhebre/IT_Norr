@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewData["Title"] = "Filter Leave Requests by Month";
+}
+
+<h2>Filter leave requests by month</h2>
+<hr />
+<form asp-action="FilterByMonth" method="post">
+    <div class="form-group">
+        <label for="month">Select Month:</label>
+        <select id="month" name="month" class="form-control">
+            @for (int i = 1; i <= 12; i++)
+            {
+                <option value="@i">@(new DateTime(1, i, 1).ToString("MMMM"))</option>
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Filter</button>
+</form>
+<div>
+    <a asp-action="LeaveHistoryDetails">Back to previous page</a>
+</div>
